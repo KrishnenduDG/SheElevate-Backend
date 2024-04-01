@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.json({ status: true, msg: "Hello from Test Route" });
+  res.json({ status: true, msg: "Hello from Test Route.. Hi" });
 });
 
 app.listen(PORT, () => {
