@@ -1,0 +1,18 @@
+{
+  "name": "Krishnendu Dasgupta",
+  "picture": "https://lh3.googleusercontent.com/a-/ALV-UjUtjx_XH2-eAntFK_jDtPPWdIqckOkONkCaoX6Em_14A6XQyoIv3tOktAx1cJO3bamXyVzrEbf7QuNGlw5fUDoaQ7iNU_tY5EXjmT1YEtK6f5eoBjVFJTrt1Cs4hxZU3ppfMH9LLWeBdNS8T615_JNkls0tRdVYxGsLnTYtOvswCjf4qYd02GkDjgKKuGVvk9xMYbqaJZuVGYX_9Ds6w6BYLTXuUVqiToeCxN8zL_RL8SBDR8R7u3AVasH4xZPoiuQVyTorD1CLJf0_b-ZCEqdjAS3DoiKPqI8h3H_r5acMmXtqEHsCRJRrgtEgy5rfxtYEEeb7lwhF6jK7yjspXgUTya2M1HQkxbuYWEpVa1wQl-mCmuusmgL6A37uCeRj8sOLRLpNBRfqdoIW52PQPZKt3PbbdAnWX0_bkTVl9OxMzXHJTM6DWA_cMzLwn4rM5GUWQLsqycphhkVHo3z9gKUCCT4Q3krt-exptI8Mswxs8N6iJUreWe6MpDknr_AuqVPl7H84RSzztyArLSI95E3ltSL0eAH4sqtitLULuv3Fnn3I8iOJKKvK1yGz4zM1q_glX6-bTXOarPXYbpI2H8HOtMn7dhC9-e-bvwyZgu06qIy5EmCbMjYDVgXDSJz37TC1XRl6hjNs-iMc8hQc88nPkOCaLKkcbY-l3mSDImpsFyON93a-DL7GbdaqapXt9pVr3cWRwJESD4E62cr1VCvz4ufmZGfDHG1GmtPGwm_YK7ySfb33DVlDcBqirH6bziavrlCuqPiNL0kwTO2DnXa20-zFXDA9WhoeWWtmdKOBHDqzng8dOnL2_JM1MTmrRSeJqDarPf-79ROFaEuvZVcH6MteO0XQCbtFHFHZMTWHJbZrUYMnpCv6JoU4kLa_L-h_MyDVoAvRmUwyATmDYHIRXBdR74H_b6x7WvG8rXJZ6tU1vsnxVgY_I-2PKbT3G-G3bzpHzfe9_jxHEN0WN0QLu9-v=s96-c",
+  "iss": "https://securetoken.google.com/sheelevate-33d85",
+  "aud": "sheelevate-33d85",
+  "auth_time": 1712321417,
+  "user_id": "UERZEhoN3TN9WWdbWzavy24Paqj2",
+  "sub": "UERZEhoN3TN9WWdbWzavy24Paqj2",
+  "iat": 1712321417,
+  "exp": 1712325017,
+  "email": "krishnendu.kdg@gmail.com",
+  "email_verified": true,
+  "firebase": {
+    "identities": { "google.com": ["Array"], "email": ["Array"] },
+    "sign_in_provider": "google.com"
+  },
+  "uid": "UERZEhoN3TN9WWdbWzavy24Paqj2"
+}
