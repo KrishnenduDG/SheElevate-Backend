@@ -5,7 +5,12 @@ import { PORT } from "./config.js";
 
 import { firebaseAuth, regCheck } from "./middlewares/index.js";
 
-import { businessRouter, userRouter } from "./routes/index.js";
+import {
+  businessRouter,
+  misclRouter,
+  userRouter,
+  workspaceRouter,
+} from "./routes/index.js";
 
 const app = express();
 
@@ -20,6 +25,8 @@ app.get("/", firebaseAuth, regCheck, (req, res) => {
 
 app.use("/business", businessRouter);
 app.use("/user", userRouter);
+app.use("/", misclRouter);
+app.use("/workspace", workspaceRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);

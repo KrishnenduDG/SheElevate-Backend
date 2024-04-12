@@ -5,6 +5,6 @@ import { firebaseAuth, regCheck } from "../middlewares/index.js";
 const router = express.Router();
 
 router
-  .get("/", firebaseAuth, regCheck, businessController.getProfile)
+  .get("/:username", firebaseAuth, regCheck, businessController.getProfile)
   .post("/register", firebaseAuth, businessController.register);
 export default router;

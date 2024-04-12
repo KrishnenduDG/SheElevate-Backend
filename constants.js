@@ -9,5 +9,5 @@ export const WORKSPACE_DEFAULT_COVER_PIC_URL_ARRAY = [
 export const failureLabel = "failure";
 export const successLabel = "success";
 
-export const superadminLabel = "superadmin";
+export const userLabel = "user";
 export const businessLabel = "business";

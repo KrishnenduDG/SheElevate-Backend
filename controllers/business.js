@@ -42,7 +42,7 @@ export class BusinessController {
 
   getProfile = async (req, res) => {
     const { serverFlag, resFlag, msg, profile } =
-      await this.businessRepo.getProfile(res.locals.uid);
+      await this.businessRepo.getProfile(req.params.username);
 
     if (!serverFlag)
       return res
@@ -52,7 +52,7 @@ export class BusinessController {
     if (!resFlag)
       return res
         .status(404)
-        .json({ status: failureLabel, message: "Business not found" });
+        .json({ status: failureLabel, message: "Business does not exist" });
 
     return res.status(200).json({
       status: successLabel,

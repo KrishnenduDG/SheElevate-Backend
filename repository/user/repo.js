@@ -7,6 +7,7 @@ export class UserRepo extends UserBaseRepo {
     this.relnMappingRepo = relnMappingRepo;
   }
 
+  findByUID = async (uid) => await this.find(this.UIDLabel, uid);
   findByName = async (name) => await this.find(this.nameLabel, name);
   findByEmail = async (email) => await this.find(this.emailLabel, email);
   findByPhone = async (phone) => await this.find(this.phoneLabel, phone);
@@ -95,15 +96,13 @@ export class UserRepo extends UserBaseRepo {
     }
   };
 
-  getProfile = async (uid) => {
+  getProfile = async (username) => {
     try {
       const targetUser = await this.prisma.user.findFirst({
         where: {
-          firebase_uid: uid,
+          username,
         },
       });
-
-      console.log(targetUser);
 
       return {
         serverFlag: true,

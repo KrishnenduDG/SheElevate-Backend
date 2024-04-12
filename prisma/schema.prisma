@@ -15,17 +15,6 @@ model Category {
   WorkspaceCategoryMapping WorkspaceCategoryMapping[]
 }
 
-model ProductImage {
-  iid String @id @unique @default(uuid())
-
-  imgUrl     String
-  caption    String
-  uploadedAt DateTime @default(now())
-
-  workspace Workspace @relation(fields: [wid], references: [wid])
-  wid       String
-}
-
 model Business {
   bid String @unique @default(uuid())
 
@@ -65,13 +54,13 @@ model User {
   email        String @unique
   phoneNumber  String @unique
 
-  address              String
-  profilePic           String?
-  showcasePics         String[]
-  bio                  String
-  joinedAt             DateTime               @default(now())
-  updatedAt            DateTime               @updatedAt
-  WorkspaceUserMapping WorkspaceUserMapping[]
+  address      String
+  profilePic   String?
+  showcasePics String[]
+  bio          String
+  joinedAt     DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  Workspace    Workspace[]
 }
 
 model Workspace {
@@ -81,9 +70,10 @@ model Workspace {
   description              String
   coverPic                 String
   createdAt                DateTime                   @default(now())
-  ProductImage             ProductImage[]
+  productPics              String[]
+  user                     User                       @relation(fields: [uid], references: [uid])
+  uid                      String
   WorkspaceCategoryMapping WorkspaceCategoryMapping[]
-  WorkspaceUserMapping     WorkspaceUserMapping[]
 }
 
 model WorkspaceCategoryMapping {
@@ -94,14 +84,4 @@ model WorkspaceCategoryMapping {
 
   category Category @relation(fields: [cid], references: [cid])
   cid      String
-}
-
-model WorkspaceUserMapping {
-  id String @unique @default(uuid())
-
-  workspace Workspace @relation(fields: [wid], references: [wid])
-  wid       String
-
-  user User   @relation(fields: [uid], references: [uid])
-  uid  String
 }

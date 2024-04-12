@@ -17,6 +17,34 @@ export class BusinessRepo extends BusinessBaseRepo {
   findByFirebaseUID = async (uid) =>
     await this.find(this.firebaseUIDLabel, uid);
 
+  getBusinessCategories = async (bid) => {
+    try {
+      const targetBusinessCategoryMappings =
+        await this.prisma.businessCategoryMapping.findMany({
+          where: { bid },
+          include: {
+            category: true,
+          },
+        });
+
+      const reqdCategories = targetBusinessCategoryMappings.map(
+        (categoryMaps) => categoryMaps.category
+      );
+
+      return {
+        serverFlag: true,
+        msg: "Categories fetched",
+        categories: reqdCategories,
+      };
+    } catch (error) {
+      return {
+        serverFlag: false,
+        msg: "Internal Server error",
+        categories: null,
+      };
+    }
+  };
+
   onboardBusiness = async (businessPayload) => {
     const nameRes = await this.findByName(businessPayload.name);
     const emailRes = await this.findByEmail(businessPayload.email);
@@ -161,11 +189,11 @@ export class BusinessRepo extends BusinessBaseRepo {
     }
   };
 
-  getProfile = async (uid) => {
+  getProfile = async (username) => {
     try {
       const targetBusiness = await this.prisma.business.findFirst({
         where: {
-          firebase_uid: uid,
+          username: username,
         },
         include: {
           BusinessCategoryMapping: {
@@ -211,7 +239,7 @@ export class BusinessRepo extends BusinessBaseRepo {
         serverFlag: true,
         resFlag: true,
         msg: "Business found",
-        profile: targetBusiness,
+        profile: resBusiness,
       };
     } catch (error) {
       console.log(error);

@@ -40,7 +40,7 @@ export class UserController {
 
   getProfile = async (req, res) => {
     const { serverFlag, resFlag, msg, profile } =
-      await this.userRepo.getProfile(res.locals.uid);
+      await this.userRepo.getProfile(req.params.username);
 
     if (!serverFlag)
       return res

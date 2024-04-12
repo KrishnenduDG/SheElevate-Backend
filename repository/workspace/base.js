@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { categoryRepo } from "../category/index.js";
 import { relnMappingRepo } from "../map_repo/index.js";
-import { productImageRepo } from "../product_image/index.js";
+import { userRepo } from "../user/index.js";
 
 export class WorkspaceBaseRepo {
   constructor() {
@@ -9,9 +9,9 @@ export class WorkspaceBaseRepo {
 
     this.categoryRepo = categoryRepo;
     this.relnMappingRepo = relnMappingRepo;
-    this.productImageRepo = productImageRepo;
+    this.userRepo = userRepo;
 
-    this.productImageRepo = this.nameLabel = "name";
+    this.widLabel = "wid";
   }
 
   find = async (propName, value) => {
@@ -19,9 +19,9 @@ export class WorkspaceBaseRepo {
 
     try {
       switch (propName) {
-        case this.nameLabel: {
+        case this.widLabel: {
           existingWS = await this.prisma.workspace.findFirst({
-            where: { name: value },
+            where: { wid: value },
           });
 
           break;

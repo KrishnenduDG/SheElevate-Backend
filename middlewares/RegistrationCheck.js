@@ -1,4 +1,4 @@
-import { businessLabel, failureLabel, superadminLabel } from "../constants.js";
+import { businessLabel, failureLabel, userLabel } from "../constants.js";
 import { businessRepo, userRepo } from "../repository/index.js";
 
 export const regCheck = async (req, res, next) => {
@@ -20,7 +20,7 @@ export const regCheck = async (req, res, next) => {
 
   if (userRes.resFlag) {
     res.locals.signedInEntity = userRes.user;
-    res.locals.role = superadminLabel;
+    res.locals.role = userLabel;
   }
 
   if (businessRes.resFlag) {

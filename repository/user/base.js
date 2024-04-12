@@ -9,6 +9,7 @@ export class UserBaseRepo {
     this.emailLabel = "email";
     this.phoneLabel = "phone";
     this.firebaseUID = "firebase_uid";
+    this.UIDLabel = "uid";
   }
 
   find = async (propName, value) => {
@@ -16,6 +17,13 @@ export class UserBaseRepo {
 
     try {
       switch (propName) {
+        case this.UIDLabel: {
+          existingUser = await this.prisma.user.findFirst({
+            where: { uid: value },
+          });
+          break;
+        }
+
         case this.nameLabel: {
           existingUser = await this.prisma.user.findFirst({
             where: { name: value },

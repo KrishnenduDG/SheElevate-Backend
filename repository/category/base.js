@@ -12,7 +12,7 @@ export class CategoryBaseRepo {
     let existingCategory;
 
     try {
-      switch (value) {
+      switch (propName) {
         case this.cidLabel: {
           existingCategory = await this.prisma.category.findFirst({
             where: { cid: value },
@@ -24,6 +24,8 @@ export class CategoryBaseRepo {
           existingCategory = await this.prisma.category.findFirst({
             where: { name: value },
           });
+
+          console.log(existingCategory);
           break;
         }
 
