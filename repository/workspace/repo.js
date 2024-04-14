@@ -6,8 +6,11 @@ export class WorkspaceRepo extends WorkspaceBaseRepo {
    */
   findWorkspaceByUser = async (username, workspaceName) => {
     try {
+      const { serverFlag, resFlag, msg, user } =
+        await this.userRepo.findByUsername(username);
+
       const targetWorkspace = await this.prisma.workspace.findFirst({
-        where: { name: workspaceName, user: { username: username } },
+        where: { name: workspaceName, uid: user.uid },
         include: {
           WorkspaceCategoryMapping: {
             include: {
