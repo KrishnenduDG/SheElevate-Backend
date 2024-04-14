@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.get("/", firebaseAuth, regCheck, (req, res) => {
+app.get("/", (req, res) => {
   res.json({ status: true, msg: "Hello from Test Route.. Hi" });
 });
 
