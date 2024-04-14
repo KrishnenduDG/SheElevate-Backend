@@ -9,6 +9,22 @@ export default class CategoryRepo extends CategoryBaseRepo {
 
   findCategoryByName = async (name) => await this.find(this.nameLabel, name);
 
+  getAllCategories = async () => {
+    try {
+      const categories = await this.prisma.category.findMany();
+      return {
+        serverFlag: true,
+        msg: "Categories fetched",
+        categories,
+      };
+    } catch (error) {
+      return {
+        serverFlag: false,
+        msg: "Internal Server Error",
+        categories: null,
+      };
+    }
+  };
   createCategory = async (catPayload) => {
     const nameRes = await this.findCategoryByName(catPayload.name);
 

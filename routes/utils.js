@@ -4,10 +4,12 @@ import { firebaseAuth, regCheck } from "../middlewares/index.js";
 
 const router = express.Router();
 
-router.get(
-  "/check-registration",
-  firebaseAuth,
-  regCheck,
-  misclController.checkRegistration
-);
+router
+  .get(
+    "/check-registration",
+    firebaseAuth,
+    regCheck,
+    misclController.checkRegistration
+  )
+  .get("/categories", misclController.getAllCategories);
 export default router;
