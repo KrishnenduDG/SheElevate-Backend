@@ -87,13 +87,11 @@ export class WorkspaceController {
         .status(500)
         .json({ status: failureLabel, msg: "Internal Server Error" });
 
-    return res
-      .status(200)
-      .json({
-        status: successLabel,
-        msg: "Workspaces fetched",
-        workspaces: categorySearchRes.workspaces,
-      });
+    return res.status(200).json({
+      status: successLabel,
+      msg: "Workspaces fetched",
+      workspaces: categorySearchRes.workspaces,
+    });
   };
 
   getWorkspaceDetails = async (req, res) => {

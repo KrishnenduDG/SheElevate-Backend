@@ -54,6 +54,8 @@ export class WorkspaceRepo extends WorkspaceBaseRepo {
         workspace: resWorkspace,
       };
     } catch (error) {
+      console.log(error);
+
       return {
         serverFlag: false,
         resFlag: false,
@@ -93,6 +95,7 @@ export class WorkspaceRepo extends WorkspaceBaseRepo {
         workspace: newWorkspace,
       };
     } catch (error) {
+      console.log(error);
       return {
         serverFlag: false,
         msg: "Internal Server Error",
