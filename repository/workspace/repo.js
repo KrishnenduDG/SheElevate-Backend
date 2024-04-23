@@ -6,6 +6,8 @@ export class WorkspaceRepo extends WorkspaceBaseRepo {
    */
   findWorkspaceByUser = async (username, workspaceName) => {
     try {
+      console.log(username, workspaceName);
+      // Naive approach.. Bug khelo tai change krlam lol
       const { serverFlag, resFlag, msg, user } =
         await this.userRepo.findByUsername(username);
 
@@ -20,6 +22,7 @@ export class WorkspaceRepo extends WorkspaceBaseRepo {
         },
       });
 
+      console.log(targetWorkspace);
       if (!targetWorkspace)
         return {
           serverFlag: true,
@@ -85,12 +88,24 @@ export class WorkspaceRepo extends WorkspaceBaseRepo {
       });
 
       // Mapping the Categories
+      const categoryArray = [];
+      for (let cat of wsPayload.categories) {
+        const { serverFlag, resFlag, msg, category } =
+          await this.categoryRepo.createCategory({
+            name: cat.name,
+            desc: cat.desc,
+          });
+        if (serverFlag) categoryArray.push(category);
+      }
+
       for (let category of wsPayload.categories) {
         const { serverFlag, resFlag, msg } =
           await this.relnMappingRepo.mapWorkspaceToCategory(
             newWorkspace,
             category
           );
+
+        console.log(serverFlag, resFlag, msg);
       }
       return {
         serverFlag: true,
